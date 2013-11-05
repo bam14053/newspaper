@@ -19,7 +19,10 @@ public class Author extends User {
 	private static final long serialVersionUID = -8060876108716111805L;
 	
 	@OneToMany(targetEntity = Article.class, mappedBy = "author")
-	private List<Article> articles ;	
+	private List<Article> articles ;
+	
+	@OneToMany(targetEntity = Comment.class, mappedBy = "user")
+	private List<Comment> comments;
 	
 	/**
 	 * @param firstname

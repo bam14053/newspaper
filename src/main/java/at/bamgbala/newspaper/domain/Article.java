@@ -48,6 +48,10 @@ public class Article implements Serializable{
 		this.text = text;
 	}
 
+	public long getID(){
+		return id;
+	}
+	
 	/**
 	 * @return the title
 	 */

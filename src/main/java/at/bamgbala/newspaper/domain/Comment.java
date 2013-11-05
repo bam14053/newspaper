@@ -36,9 +36,13 @@ public class Comment implements Serializable {
 	@JoinColumn(name = "articleID")
 	private Article article;
 	
-	@ManyToOne(targetEntity = User.class)
+	@ManyToOne(targetEntity = RegularUser.class)
 	@JoinColumn(name = "userID")
-	private User user;
+	private RegularUser user;
+	
+	@ManyToOne(targetEntity = Author.class)
+	@JoinColumn(name = "authorID")
+	private Author author;
 	
 	@NotNull
 	@Size(max = 200)
@@ -54,11 +58,12 @@ public class Comment implements Serializable {
 	 * @param text
 	 * @param writtenOn
 	 */
-	public Comment(Article article, User user, String text,
+	public Comment(Article article, Author author, RegularUser user, String text,
 			GregorianCalendar writtenOn) {
 		super();
 		this.article = article;
 		this.user = user;
+		this.author = author;
 		this.text = text;
 		this.writtenOn = writtenOn;
 	}

@@ -20,8 +20,10 @@ public class RegularUser extends User {
 	private static final long serialVersionUID = -8123012255704604565L;
 	
 	@OneToMany(mappedBy = "user")
-	private List<Article> articlesRead;
+	private List<ArticleRead> articlesRead;
 
+	@OneToMany(targetEntity = Comment.class, mappedBy = "user")
+	private List<Comment> comments;	
 	/**
 	 * @param firstname
 	 * @param surname
@@ -32,13 +34,12 @@ public class RegularUser extends User {
 	public RegularUser(String firstname, String surname, String username,
 			String password, String email) {
 		super(firstname, surname, username, password, email);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @return the articlesRead
 	 */
-	public List<Article> getArticlesRead() {
+	public List<ArticleRead> getArticlesRead() {
 		return articlesRead;
 	}
 		

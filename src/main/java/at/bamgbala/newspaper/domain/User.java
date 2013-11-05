@@ -4,8 +4,6 @@
 package at.bamgbala.newspaper.domain;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -23,10 +21,7 @@ public class User implements Serializable {
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)	
-	private long id;	
-	
-	@OneToMany(targetEntity = Comment.class, mappedBy = "user")
-	private List<Comment> comments;	
+	private long id;		
 	
 	@Size(max = 255)
 	@NotNull
