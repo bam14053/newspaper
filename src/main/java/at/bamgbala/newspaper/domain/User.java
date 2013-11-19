@@ -4,9 +4,12 @@
 package at.bamgbala.newspaper.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import at.bamgbala.newspaper.Ensure;
 
 /**
  * @author abideen
@@ -19,7 +22,7 @@ public class User implements Serializable {
 	
 	@Id
 	@NotNull
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id", nullable = false)	
 	private long id;		
 	
@@ -48,6 +51,7 @@ public class User implements Serializable {
 	@Column(name = "email", nullable = false, length = 255)
 	private String email;
 	
+	
 	/**
 	 * @param firstname
 	 * @param surname
@@ -58,6 +62,11 @@ public class User implements Serializable {
 	public User(String firstname, String surname, String username,
 			String password, String email) {
 		super();
+		Ensure.notEmpty("firstname", firstname);
+		Ensure.notEmpty("surname", surname);
+		Ensure.notEmpty("username", username);
+		Ensure.notEmpty("password", password);
+		Ensure.notEmpty("email", email);
 		this.firstname = firstname;
 		this.surname = surname;
 		this.username = username;

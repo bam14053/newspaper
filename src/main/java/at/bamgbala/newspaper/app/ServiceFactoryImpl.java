@@ -3,6 +3,7 @@
  */
 package at.bamgbala.newspaper.app;
 
+import at.bamgbala.newspaper.jparepository.PersistenceFactory;
 import at.bamgbala.newspaper.service.ArticleManagementService;
 import at.bamgbala.newspaper.service.ArticleReadManagementService;
 import at.bamgbala.newspaper.service.CommentManagementService;
@@ -14,7 +15,11 @@ import at.bamgbala.newspaper.service.UserManagementService;
  *
  */
 public class ServiceFactoryImpl implements ServiceFactory {
-
+	private PersistenceFactory persistenceFactory;
+	
+	public ServiceFactoryImpl(PersistenceFactory persistenceFactory){
+		this.persistenceFactory = persistenceFactory;
+	}
 	
 	/* (non-Javadoc)
 	 * @see at.bamgbala.newspaper.service.ServiceFactory#userManagementService()

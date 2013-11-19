@@ -15,7 +15,7 @@ public class ArticleRepository extends AbstractJPARepository<Article> {
 	@Override
 	public List<Article> findAll() {
 		logger.debug("Listing all articles");
-		return entityManager.createQuery("SELECT * FROM a_articles",
+		return entityManager.createQuery("SELECT a FROM Article a",
 				Article.class).getResultList();
 	}
 

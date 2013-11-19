@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import at.bamgbala.newspaper.Ensure;
+
 /**
  * @author abideen
  *
@@ -51,6 +53,9 @@ public class ArticleRead implements Serializable {
 	public ArticleRead(Article article, RegularUser user,
 			GregorianCalendar readOn) {
 		super();
+		Ensure.notNull("article", article);
+		Ensure.notNull("user", user);
+		Ensure.notNull("readOn", readOn);
 		this.article = article;
 		this.user = user;
 		this.readOn = readOn;

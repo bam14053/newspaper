@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import at.bamgbala.newspaper.Ensure;
+
 /**
  * @author abideen
  *
@@ -61,6 +63,11 @@ public class Comment implements Serializable {
 	public Comment(Article article, Author author, RegularUser user, String text,
 			GregorianCalendar writtenOn) {
 		super();
+		Ensure.notNull("article", article);
+		Ensure.notNull("author", author);
+		Ensure.notNull("user", user);
+		Ensure.notEmpty("text", text);
+		Ensure.notNull("writtenOn", writtenOn);
 		this.article = article;
 		this.user = user;
 		this.author = author;

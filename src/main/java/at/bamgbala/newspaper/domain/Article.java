@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import at.bamgbala.newspaper.Ensure;
+
 /**
  * @author abideen
  * The Article domain class, represents the a_articles table
@@ -17,8 +19,9 @@ public class Article implements Serializable{
 	
 	@NotNull
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name = "articleID", nullable = false)
-	private int id;
+	private long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "writtenBy")
@@ -43,6 +46,9 @@ public class Article implements Serializable{
 	 */
 	public Article(Author author, String title, String text) {
 		super();
+		Ensure.notNull("author", author);
+		Ensure.notEmpty("title", title);
+		Ensure.notEmpty("text", text);
 		this.author = author;
 		this.title = title;
 		this.text = text;

@@ -24,8 +24,10 @@ public class Main {
 		entitymf = Persistence.createEntityManagerFactory("newspaper");
 		entityManager = entitymf.createEntityManager();
 		persistenceFactory = new PersistenceFactoryImpl(entityManager);
-		serviceFactory = new ServiceFactoryImpl();
+		serviceFactory = new ServiceFactoryImpl(persistenceFactory);
 	}
+	
+	
 
 	public void close() {
 		if (entityManager != null)

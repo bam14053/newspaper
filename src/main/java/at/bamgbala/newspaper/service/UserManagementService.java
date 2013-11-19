@@ -3,6 +3,8 @@
  */
 package at.bamgbala.newspaper.service;
 
+import java.util.List;
+
 import at.bamgbala.newspaper.domain.Author;
 import at.bamgbala.newspaper.domain.RegularUser;
 import at.bamgbala.newspaper.domain.User;
@@ -28,5 +30,9 @@ public class UserManagementService{
 	
 	public User findUserByID(long id){
 		return userRepo.findById(id);
+	}
+	
+	public List<User> getAllUsers(){
+		return userRepo.findAll();
 	}
 }
