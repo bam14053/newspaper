@@ -1,5 +1,6 @@
 *.class
 bin
+target
 # Eclipse files#
 .classpath
 .project
