@@ -37,6 +37,9 @@ public class Author extends User {
 		// TODO Auto-generated constructor stub
 	}
 
+	protected Author(){
+		
+	}
 
 	@Column(name = "amountOfArticles")
 	private int amountOfArticles;

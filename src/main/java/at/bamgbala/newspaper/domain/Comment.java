@@ -56,25 +56,39 @@ public class Comment implements Serializable {
 
 	/**
 	 * @param article
-	 * @param user
+	 * @param author
 	 * @param text
 	 * @param writtenOn
 	 */
-	public Comment(Article article, Author author, RegularUser user, String text,
+	public Comment(Article article, Author author, String text,
 			GregorianCalendar writtenOn) {
 		super();
 		Ensure.notNull("article", article);
 		Ensure.notNull("author", author);
-		Ensure.notNull("user", user);
 		Ensure.notEmpty("text", text);
 		Ensure.notNull("writtenOn", writtenOn);
 		this.article = article;
-		this.user = user;
 		this.author = author;
 		this.text = text;
 		this.writtenOn = writtenOn;
 	}
 	
+	public Comment(Article article, RegularUser user, String text,
+			GregorianCalendar writtenOn) {
+		super();
+		Ensure.notNull("article", article);
+		Ensure.notNull("user", user);
+		Ensure.notEmpty("text", text);
+		Ensure.notNull("writtenOn", writtenOn);
+		this.article = article;
+		this.user = user;
+		this.text = text;
+		this.writtenOn = writtenOn;
+	}
+	
+	protected Comment(){
+		
+	}
 	/**
 	 * @return the text
 	 */

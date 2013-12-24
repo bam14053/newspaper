@@ -73,6 +73,10 @@ public class User implements Serializable {
 		this.password = password;
 		this.email = email;
 	}
+	
+	protected User(){
+		
+	}
 	/**
 	 * @return the id
 	 */

@@ -36,6 +36,9 @@ public class RegularUser extends User {
 		super(firstname, surname, username, password, email);
 	}
 
+	protected RegularUser(){
+		
+	}
 	/**
 	 * @return the articlesRead
 	 */

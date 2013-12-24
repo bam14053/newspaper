@@ -60,6 +60,10 @@ public class ArticleRead implements Serializable {
 		this.user = user;
 		this.readOn = readOn;
 	}
+	
+	protected ArticleRead(){
+		
+	}
 
 	/**
 	 * @return the article

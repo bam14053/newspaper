@@ -18,7 +18,11 @@ public class CommentManagementService {
 	private CommentRepository commentRepo;
 	
 	public void createNewComment(Article article, Author author, RegularUser user, String text, GregorianCalendar writtenOn){		
-		Comment c = new Comment(article, author, user, text, writtenOn);
+		Comment c;
+		if(author == null)
+			c = new Comment(article, user, text, writtenOn);
+		else
+			c = new Comment(article, author, text, writtenOn);
 		commentRepo.persist(c);
 	}
 	

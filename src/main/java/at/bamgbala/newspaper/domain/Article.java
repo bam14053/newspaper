@@ -54,6 +54,10 @@ public class Article implements Serializable{
 		this.text = text;
 	}
 
+	protected Article(){
+		
+	}
+	
 	public long getID(){
 		return id;
 	}

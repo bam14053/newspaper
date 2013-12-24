@@ -1,12 +1,11 @@
 /**
  * 
  */
-package at.bamgbala.newspaper.jparepository;
+package at.bamgbala.newspaper.domain;
 
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -18,9 +17,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
  *
  */
 @Configuration
-@ComponentScan(basePackages = "at.bamgbala.newspaper.jparepository")
-public class RepositoryJpaConfiguration {
-	
+public class DomainConfiguration {
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter(){
 		HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
@@ -31,11 +28,11 @@ public class RepositoryJpaConfiguration {
 	}
 	
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter){
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter){
 		LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
         lef.setDataSource(dataSource);
         lef.setJpaVendorAdapter(jpaVendorAdapter);
-        lef.setPackagesToScan("at.bamgbala.newspaper.domain");
+        lef.setPackagesToScan(DomainPackage.class.getPackage().getName());
         return lef;
 	}
 }
