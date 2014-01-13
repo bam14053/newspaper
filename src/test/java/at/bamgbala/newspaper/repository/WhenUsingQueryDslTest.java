@@ -1,7 +1,4 @@
 package at.bamgbala.newspaper.repository;
-
-import static org.junit.Assert.*;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,22 +7,25 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.mysema.query.jpa.impl.JPAQuery;
 
 import at.bamgbala.newspaper.domain.Article;
 import at.bamgbala.newspaper.domain.Author;
+import at.bamgbala.newspaper.domain.QArticle;
 
 @ContextConfiguration(classes = RepositoryTestConfiguration.class)
-public class WhenUsingQueryDslTest {
+public class WhenUsingQueryDslTest extends AbstractJUnit4SpringContextTests{
     @PersistenceContext
     EntityManager entityManager;
 
     @Autowired
     ArticleRepository articleRepository;
     
-	@Autowired
-	AuthorRepository authorRepository;
+    @Autowired
+    AuthorRepository authorRepository;
+    
 	Author author1;
 	Author author2;
 	Author author3;
@@ -35,6 +35,7 @@ public class WhenUsingQueryDslTest {
 	
 	@Before
 	public void setup(){		
+		articleRepository.deleteAll();
 		author1 = new Author("Abideen", "Bamgbala", "abi", "password", "abi@hotmail.com");
 		author2 = new Author("Anil", "Guel", "gue", "passw2", "gue@hotmail.com");
 		author3 = new Author("Loa", "Mol", "asd", "wdsds", "adsas@hotmail.com");		
@@ -53,13 +54,27 @@ public class WhenUsingQueryDslTest {
 	public void testFindByAuthor() {
 		Assert.assertEquals(3, articleRepository.count());
 		JPAQuery query = new JPAQuery(entityManager);
+		QArticle article = QArticle.article;
+		
+		//First query
+		query.from(article).where(article.author.eq(author1));		
+		Article result = query.singleResult(article);
+		
+		Assert.assertNotNull(result);
+		Assert.assertEquals(article1.getID(), result.getID());
 	}
 
 	@Test
-	public void testFindByTitle() {
-		Assert.assertEquals(article1.getID(), articleRepository.findByTitle("First Article").getID());
-		Assert.assertEquals(article2.getID(), articleRepository.findByTitle("Second Article").getID());
-		Assert.assertEquals(article3.getID(), articleRepository.findByTitle("Third Article").getID());		
+	public void testFindByTitle() {	
+		JPAQuery query = new JPAQuery(entityManager);
+		QArticle article = QArticle.article;
+		
+		query.from(article).where(article.title.eq("First Article"));
+		
+		Article result = query.singleResult(article);
+		
+		Assert.assertNotNull(result);
+		Assert.assertEquals(article1.getID(), result.getID());
 	}
 
 }

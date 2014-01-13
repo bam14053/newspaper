@@ -34,9 +34,9 @@ public class RegularUserRepositoryTest extends AbstractJUnit4SpringContextTests{
 		
 		//Then
 		Assert.assertEquals(3, regularUserRepository.count());
-		Assert.assertEquals(user1, findAll.next());
-		Assert.assertEquals(user2, findAll.next());
-		Assert.assertEquals(user3, findAll.next());
+		Assert.assertEquals(user1.getId(), findAll.next().getId());
+		Assert.assertEquals(user2.getId(), findAll.next().getId());
+		Assert.assertEquals(user3.getId(), findAll.next().getId());
 		
 	}
 

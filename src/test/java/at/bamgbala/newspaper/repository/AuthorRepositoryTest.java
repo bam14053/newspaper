@@ -1,9 +1,9 @@
 package at.bamgbala.newspaper.repository;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,7 +20,12 @@ public class AuthorRepositoryTest extends AbstractJUnit4SpringContextTests{
 	public void tearDown() throws Exception {
 		authorRepository.deleteAll();
 	}
-
+	
+	@Before
+	public void setup(){
+		authorRepository.deleteAll();
+	}
+	
 	@Test
 	public void test() {
 		Author user1 = new Author("Abideen", "Bamgbala", "abi", "password", "abi@hotmail.com");

@@ -22,6 +22,12 @@ import at.bamgbala.newspaper.domain.RegularUser;
 public class CommentRepositoryTest extends AbstractJUnit4SpringContextTests{
 	@Autowired
 	CommentRepository commentRepository;
+	@Autowired
+	AuthorRepository authorRepository;
+	@Autowired
+	ArticleRepository articleRepository;
+	@Autowired
+	RegularUserRepository regularUserRepository;
 	
 	Author author;
 	Article article;
@@ -37,6 +43,9 @@ public class CommentRepositoryTest extends AbstractJUnit4SpringContextTests{
 		author = new Author("Abideen", "Bamgbala", "abi", "hello", "bam14053@hotmail.com");
 		article = new Article(author, "First Article", "BALABLA");
 		regularUser = new RegularUser("B", "A", "abi", "ok", "bam@homail.com");
+		authorRepository.save(author);		
+		regularUserRepository.save(regularUser);
+		articleRepository.save(article);
 		commentRepository.save(new Comment(article, regularUser, "That is a good text", new GregorianCalendar(2012, 3, 5)));
 		commentRepository.save(new Comment(article, author, "Thanks, for comments", new GregorianCalendar(2012, 3, 5)));
 		commentRepository.save(new Comment(article, regularUser, "That is a good text again", new GregorianCalendar(2012, 3, 5)));
@@ -54,13 +63,13 @@ public class CommentRepositoryTest extends AbstractJUnit4SpringContextTests{
 	@Test
 	public void testFindByUser() {
 		List<Comment> result = commentRepository.findByUser(regularUser);
-		Assert.assertEquals(3, result.size());
+		Assert.assertEquals(4, result.size());
 	}
 
 	@Test
 	public void testFindByAuthor() {
 		List<Comment> result = commentRepository.findByAuthor(author);
-		Assert.assertEquals(3, result.size());
+		Assert.assertEquals(2, result.size());
 	}
 
 	@Test

@@ -15,11 +15,19 @@ import at.bamgbala.newspaper.domain.Article;
 import at.bamgbala.newspaper.domain.ArticleRead;
 import at.bamgbala.newspaper.domain.Author;
 import at.bamgbala.newspaper.domain.RegularUser;
+import at.bamgbala.newspaper.jparepository.UserRepository;
 
 @ContextConfiguration(classes = RepositoryTestConfiguration.class)
 public class ArticleReadRepositoryTest extends AbstractJUnit4SpringContextTests{
 	@Autowired
-	ArticleReadRepository articleReadRepository;
+	ArticleReadRepository articleReadRepository;	
+	@Autowired
+	ArticleRepository articleRepository;
+	@Autowired
+	RegularUserRepository regularUserRepository;
+	@Autowired
+	AuthorRepository authorRepository;
+	
 	
 	Author user1;
 	RegularUser user2;
@@ -37,6 +45,10 @@ public class ArticleReadRepositoryTest extends AbstractJUnit4SpringContextTests{
 		article1 = new Article(user1, "First Article", "hadha");		
 		articleRead = new ArticleRead(article1,user2, date);
 		articleRead2 = new ArticleRead(article1,user3, date);
+		authorRepository.save(user1);
+		regularUserRepository.save(user2);
+		regularUserRepository.save(user3);
+		articleRepository.save(article1);
 		articleReadRepository.save(articleRead);
 		articleReadRepository.save(articleRead2);
 	}

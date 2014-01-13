@@ -1,5 +1,7 @@
 package at.bamgbala.newspaper.repository;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,8 +27,10 @@ public class ArticleRepositoryTest extends AbstractJUnit4SpringContextTests{
 	Article article2;
 	Article article3;
 	
+	
 	@Before
-	public void setup(){		
+	public void setup(){	
+		articleRepository.deleteAll();
 		author1 = new Author("Abideen", "Bamgbala", "abi", "password", "abi@hotmail.com");
 		author2 = new Author("Anil", "Guel", "gue", "passw2", "gue@hotmail.com");
 		author3 = new Author("Loa", "Mol", "asd", "wdsds", "adsas@hotmail.com");		
@@ -45,6 +49,34 @@ public class ArticleRepositoryTest extends AbstractJUnit4SpringContextTests{
 	public void tearDown() throws Exception {
 		articleRepository.deleteAll();
 	}
+	
+
+    @Test
+    public void testQueryJpaQuery() {    	
+    	List<Article> result = articleRepository.findWithJqaQuery(author1);
+    	
+    	Assert.assertNotNull(result);
+    	Assert.assertEquals(article1.getID(), result.get(0).getID());
+    	Assert.assertEquals(author1.getId(), result.get(0).getAuthor().getId());
+    }
+
+    @Test
+    public void testQueryDslQuery() {
+    	List<Article> result = articleRepository.findWithQueryDsl(author1);   
+    	
+    	Assert.assertNotNull(result);
+    	Assert.assertEquals(article1.getID(), result.get(0).getID());
+    	Assert.assertEquals(author1.getId(), result.get(0).getAuthor().getId());
+    }
+    
+    @Test
+    public void testQueryCriteriaApi() {
+    	List<Article> result = articleRepository.findWithCriteriaApi(author1);
+    	
+    	Assert.assertNotNull(result);
+    	Assert.assertEquals(article1.getID(), result.get(0).getID());
+    	Assert.assertEquals(author1.getId(), result.get(0).getAuthor().getId());
+    }
 
 	@Test
 	public void testFindByAuthor() {

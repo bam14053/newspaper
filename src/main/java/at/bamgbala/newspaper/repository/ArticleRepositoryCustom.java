@@ -6,6 +6,6 @@ import at.bamgbala.newspaper.domain.Author;
 
 public interface ArticleRepositoryCustom {
 	List<Article> findWithQueryDsl(Author author);
-    List<Article> findWithJqlQuery(Author author);	
+    List<Article> findWithJqaQuery(Author author);	
     List<Article> findWithCriteriaApi(Author author);
 }
