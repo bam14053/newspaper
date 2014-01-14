@@ -14,7 +14,7 @@ public class UserRepositoryTest extends AbstractJPARepositoryTest{
 	@Test
 	public void verifyFindByID(){
 		// Creation of entitiy manager and repository
-		UserRepository userRepository = new UserRepository();
+		UserJpaRepository userRepository = new UserJpaRepository();
 		userRepository.setEntityManager(entityManager);
 		
 		//Repo should be empty

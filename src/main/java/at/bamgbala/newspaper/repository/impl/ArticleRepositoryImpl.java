@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 import com.mysema.query.jpa.impl.JPAQuery;
 
 import at.bamgbala.newspaper.domain.Article;
-import at.bamgbala.newspaper.domain.ArticleRead;
 import at.bamgbala.newspaper.domain.Author;
 import at.bamgbala.newspaper.domain.QArticle;
 import at.bamgbala.newspaper.repository.ArticleRepositoryCustom;

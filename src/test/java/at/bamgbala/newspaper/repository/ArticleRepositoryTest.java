@@ -12,7 +12,6 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import at.bamgbala.newspaper.domain.Article;
 import at.bamgbala.newspaper.domain.Author;
-import at.bamgbala.newspaper.jparepository.UserRepository;
 
 @ContextConfiguration(classes = RepositoryTestConfiguration.class)
 public class ArticleRepositoryTest extends AbstractJUnit4SpringContextTests{

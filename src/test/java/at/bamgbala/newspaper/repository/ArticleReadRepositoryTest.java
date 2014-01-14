@@ -15,7 +15,6 @@ import at.bamgbala.newspaper.domain.Article;
 import at.bamgbala.newspaper.domain.ArticleRead;
 import at.bamgbala.newspaper.domain.Author;
 import at.bamgbala.newspaper.domain.RegularUser;
-import at.bamgbala.newspaper.jparepository.UserRepository;
 
 @ContextConfiguration(classes = RepositoryTestConfiguration.class)
 public class ArticleReadRepositoryTest extends AbstractJUnit4SpringContextTests{

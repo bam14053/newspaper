@@ -7,8 +7,8 @@ import at.bamgbala.newspaper.domain.Author;
 import at.bamgbala.newspaper.domain.User;
 
 public class ArticleRepositoryTest extends AbstractJPARepositoryTest {
-	ArticleRepository articleRepository = new ArticleRepository();
-	UserRepository userRepository = new UserRepository();
+	ArticleJpaRepository articleRepository = new ArticleJpaRepository();
+	UserJpaRepository userRepository = new UserJpaRepository();
 	
 	@Before
 	public void setup(){

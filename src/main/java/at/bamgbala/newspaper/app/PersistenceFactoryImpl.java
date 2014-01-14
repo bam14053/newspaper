@@ -8,11 +8,11 @@ import java.util.HashMap;
 import javax.persistence.EntityManager;
 
 import at.bamgbala.newspaper.jparepository.AnyRepo;
-import at.bamgbala.newspaper.jparepository.ArticleReadRepository;
-import at.bamgbala.newspaper.jparepository.ArticleRepository;
-import at.bamgbala.newspaper.jparepository.CommentRepository;
+import at.bamgbala.newspaper.jparepository.ArticleReadJpaRepository;
+import at.bamgbala.newspaper.jparepository.ArticleJpaRepository;
+import at.bamgbala.newspaper.jparepository.CommentJpaRepository;
 import at.bamgbala.newspaper.jparepository.PersistenceFactory;
-import at.bamgbala.newspaper.jparepository.UserRepository;
+import at.bamgbala.newspaper.jparepository.UserJpaRepository;
 
 /**
  * @author abideen
@@ -25,53 +25,53 @@ public class PersistenceFactoryImpl implements PersistenceFactory {
 		/*
 		 * Initializing all repos
 		 */
-		UserRepository userRepository = new UserRepository();
+		UserJpaRepository userRepository = new UserJpaRepository();
 		userRepository.setEntityManager(entityManager);
-		repos.put(UserRepository.class, userRepository);
+		repos.put(UserJpaRepository.class, userRepository);
 		
-		ArticleRepository articleRepository = new ArticleRepository();
+		ArticleJpaRepository articleRepository = new ArticleJpaRepository();
 		articleRepository.setEntityManager(entityManager);
-		repos.put(ArticleRepository.class, articleRepository);
+		repos.put(ArticleJpaRepository.class, articleRepository);
 		
-		CommentRepository commentRepository = new CommentRepository();
+		CommentJpaRepository commentRepository = new CommentJpaRepository();
 		commentRepository.setEntityManager(entityManager);
-		repos.put(CommentRepository.class, commentRepository);
+		repos.put(CommentJpaRepository.class, commentRepository);
 		
-		ArticleReadRepository articleReadRepository = new ArticleReadRepository();
+		ArticleReadJpaRepository articleReadRepository = new ArticleReadJpaRepository();
 		articleReadRepository.setEntityManager(entityManager);
-		repos.put(ArticleReadRepository.class, articleReadRepository);
+		repos.put(ArticleReadJpaRepository.class, articleReadRepository);
 		
 	}
 	/* (non-Javadoc)
 	 * @see at.bamgbala.newspaper.jparepository.PersistenceFactory#userRepository()
 	 */
 	@Override
-	public UserRepository userRepository() {
-		return (UserRepository)repos.get(UserRepository.class);
+	public UserJpaRepository userRepository() {
+		return (UserJpaRepository)repos.get(UserJpaRepository.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see at.bamgbala.newspaper.jparepository.PersistenceFactory#articleRepository()
 	 */
 	@Override
-	public ArticleRepository articleRepository() {
-		return (ArticleRepository)repos.get(ArticleRepository.class);
+	public ArticleJpaRepository articleRepository() {
+		return (ArticleJpaRepository)repos.get(ArticleJpaRepository.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see at.bamgbala.newspaper.jparepository.PersistenceFactory#articleReadRepository()
 	 */
 	@Override
-	public ArticleReadRepository articleReadRepository() {
-		return (ArticleReadRepository)repos.get(ArticleReadRepository.class);
+	public ArticleReadJpaRepository articleReadRepository() {
+		return (ArticleReadJpaRepository)repos.get(ArticleReadJpaRepository.class);
 	}
 
 	/* (non-Javadoc)
 	 * @see at.bamgbala.newspaper.jparepository.PersistenceFactory#commentRepository()
 	 */
 	@Override
-	public CommentRepository commentRepository() {
-		return (CommentRepository)repos.get(CommentRepository.class);
+	public CommentJpaRepository commentRepository() {
+		return (CommentJpaRepository)repos.get(CommentJpaRepository.class);
 	}
 
 }

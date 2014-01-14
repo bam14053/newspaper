@@ -21,13 +21,14 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.util.Assert;
 
 import at.bamgbala.newspaper.jparepository.RepositoryJpaConfiguration;
-import at.bamgbala.newspaper.jparepository.UserRepositoryTest;
+import at.bamgbala.newspaper.servicejpa.ServiceJpaConfiguration;
+import at.bamgbala.newspaper.servicejpa.UserManagementService;
 /**
  * @author abideen
  *
  */
 @Configuration
-@Import(value = {RepositoryJpaConfiguration.class, ServiceConfiguration.class})
+@Import(value = {RepositoryJpaConfiguration.class, ServiceJpaConfiguration.class})
 public class UserTest{
 	private UserManagementService userManagementService;
 	AbstractApplicationContext context;

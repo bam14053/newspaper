@@ -4,17 +4,17 @@
 package at.bamgbala.newspaper.app;
 
 import at.bamgbala.newspaper.jparepository.PersistenceFactory;
-import at.bamgbala.newspaper.service.ArticleManagementService;
-import at.bamgbala.newspaper.service.ArticleReadManagementService;
-import at.bamgbala.newspaper.service.CommentManagementService;
-import at.bamgbala.newspaper.service.ServiceFactory;
-import at.bamgbala.newspaper.service.UserManagementService;
+import at.bamgbala.newspaper.servicejpa.ArticleManagementService;
+import at.bamgbala.newspaper.servicejpa.ArticleReadManagementService;
+import at.bamgbala.newspaper.servicejpa.CommentManagementService;
+import at.bamgbala.newspaper.servicejpa.ServiceJpaFactory;
+import at.bamgbala.newspaper.servicejpa.UserManagementService;
 
 /**
  * @author abideen
  *
  */
-public class ServiceFactoryImpl implements ServiceFactory {
+public class ServiceFactoryImpl implements ServiceJpaFactory {
 	private PersistenceFactory persistenceFactory;
 	
 	public ServiceFactoryImpl(PersistenceFactory persistenceFactory){

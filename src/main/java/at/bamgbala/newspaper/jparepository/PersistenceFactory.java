@@ -8,8 +8,8 @@ package at.bamgbala.newspaper.jparepository;
  *
  */
 public interface PersistenceFactory {
-	UserRepository userRepository();
-	ArticleRepository articleRepository();
-	ArticleReadRepository articleReadRepository();
-	CommentRepository commentRepository();
+	UserJpaRepository userRepository();
+	ArticleJpaRepository articleRepository();
+	ArticleReadJpaRepository articleReadRepository();
+	CommentJpaRepository commentRepository();
 }
