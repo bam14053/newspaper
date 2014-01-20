@@ -34,10 +34,13 @@ public class CommentRepositoryTest extends AbstractJUnit4SpringContextTests{
 	@After
 	public void tearDown() throws Exception {
 		commentRepository.deleteAll();
+		articleRepository.deleteAll();
+		authorRepository.deleteAll();		
+		regularUserRepository.deleteAll();
 	}
 
 	@Before
-	public void setup(){
+	public void setup(){		
 		author = new Author("Abideen", "Bamgbala", "abi", "hello", "bam14053@hotmail.com");
 		article = new Article(author, "First Article", "BALABLA");
 		regularUser = new RegularUser("B", "A", "abi", "ok", "bam@homail.com");

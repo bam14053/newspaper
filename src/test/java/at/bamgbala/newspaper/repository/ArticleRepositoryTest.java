@@ -47,6 +47,7 @@ public class ArticleRepositoryTest extends AbstractJUnit4SpringContextTests{
 	@After
 	public void tearDown() throws Exception {
 		articleRepository.deleteAll();
+		authorRepository.deleteAll();
 	}
 	
 

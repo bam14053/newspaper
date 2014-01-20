@@ -2,6 +2,7 @@ package at.bamgbala.newspaper.repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,9 +34,14 @@ public class WhenUsingQueryDslTest extends AbstractJUnit4SpringContextTests{
 	Article article2;
 	Article article3;
 	
+	@After
+	public void teardown(){
+		articleRepository.deleteAll();
+		authorRepository.deleteAll();
+	}
+	
 	@Before
 	public void setup(){		
-		articleRepository.deleteAll();
 		author1 = new Author("Abideen", "Bamgbala", "abi", "password", "abi@hotmail.com");
 		author2 = new Author("Anil", "Guel", "gue", "passw2", "gue@hotmail.com");
 		author3 = new Author("Loa", "Mol", "asd", "wdsds", "adsas@hotmail.com");		

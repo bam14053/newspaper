@@ -3,6 +3,7 @@ import java.util.Iterator;
 
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,6 +21,11 @@ public class RegularUserRepositoryTest extends AbstractJUnit4SpringContextTests{
 		regularUserRepository.deleteAll();
 	}
 
+	@Before
+	public void startUp(){
+		regularUserRepository.deleteAll();
+	}
+	
 	@Test
 	public void test() {
 		RegularUser user1 = new RegularUser("Abideen", "Bamgbala", "abi", "password", "abi@hotmail.com");
