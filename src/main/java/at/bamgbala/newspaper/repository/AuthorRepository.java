@@ -10,4 +10,5 @@ import at.bamgbala.newspaper.domain.Author;
  *
  */
 public interface AuthorRepository extends CrudRepository<Author, Long> {
+	Author findByFirstname(String name);
 }

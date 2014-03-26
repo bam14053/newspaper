@@ -1,8 +1,6 @@
 package at.bamgbala.newspaper.rest;
 
-import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
 public class RestWebApplicationInitializer extends
 		AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -13,12 +11,12 @@ public class RestWebApplicationInitializer extends
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[] { RepositoryRestMvcConfiguration.class };
+		return new Class<?>[] { RestWebConfiguration.class };
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] { "/*" };
+		return new String[] { "/abi-rest/*" };
 	}
 
 }

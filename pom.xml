@@ -99,7 +99,22 @@
 			<artifactId>cglib</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-
+	<!-- Wicket -->
+	<dependency>
+		<groupId>org.apache.wicket</groupId>
+		<artifactId>wicket-core</artifactId>
+		<version>6.14.0</version>
+	</dependency>
+	 <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-spring</artifactId>
+            <version>6.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-bootstrap</artifactId>
+            <version>0.16</version>
+        </dependency>
 		<!-- Spring web -->
 		<dependency>
 			<groupId>org.springframework</groupId>

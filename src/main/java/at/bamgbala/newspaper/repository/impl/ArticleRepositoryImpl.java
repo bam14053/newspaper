@@ -8,9 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
 import com.mysema.query.jpa.impl.JPAQuery;
-
 import at.bamgbala.newspaper.domain.Article;
 import at.bamgbala.newspaper.domain.Author;
 import at.bamgbala.newspaper.domain.QArticle;
