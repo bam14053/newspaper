@@ -4,13 +4,15 @@
 package at.bamgbala.newspaper.jparepository;
 
 import java.util.List;
+
 import at.bamgbala.newspaper.domain.ArticleRead;
 
 /**
  * @author abideen
- *
+ * 
  */
-public class ArticleReadJpaRepository extends AbstractJPARepository<ArticleRead> {
+public class ArticleReadJpaRepository extends
+		AbstractJPARepository<ArticleRead> {
 
 	@Override
 	public List<ArticleRead> findAll() {

@@ -15,11 +15,14 @@ import at.bamgbala.newspaper.domain.User;
 
 /**
  * @author abideen
- *
+ * 
  */
 public interface CommentRepository extends CrudRepository<Comment, Long> {
 	List<Comment> findByArticle(Article article);
+
 	List<Comment> findByUser(User user);
+
 	List<Comment> findByAuthor(Author author);
+
 	List<Comment> findByWrittenOn(GregorianCalendar date);
 }

@@ -20,28 +20,27 @@ import at.bamgbala.newspaper.Ensure;
 
 /**
  * @author abideen
- *
+ * 
  */
 @Entity
 @Table(name = "ar_articleRead")
 public class ArticleRead implements Serializable {
 	private static final long serialVersionUID = 6786575474486292837L;
 
-
 	@Id
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private long id;
-	
+
 	@ManyToOne(targetEntity = Article.class)
 	@JoinColumn(name = "articleID")
 	private Article article;
-	
+
 	@ManyToOne(targetEntity = RegularUser.class)
 	@JoinColumn(name = "userID")
 	private RegularUser user;
-	
+
 	@Column(name = "timestamp")
 	private GregorianCalendar readOn;
 
@@ -60,9 +59,9 @@ public class ArticleRead implements Serializable {
 		this.user = user;
 		this.readOn = readOn;
 	}
-	
-	protected ArticleRead(){
-		
+
+	protected ArticleRead() {
+
 	}
 
 	/**
@@ -85,5 +84,5 @@ public class ArticleRead implements Serializable {
 	public GregorianCalendar getReadOn() {
 		return readOn;
 	}
-	
+
 }

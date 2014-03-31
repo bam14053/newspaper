@@ -2,28 +2,30 @@
  * 
  */
 package at.bamgbala.newspaper.domain;
+
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 /**
  * @author abideen
- *
+ * 
  */
 @Entity
 @Table(name = "au_authors")
 public class Author extends User {
 
 	private static final long serialVersionUID = -8060876108716111805L;
-	
+
 	@OneToMany(targetEntity = Article.class, mappedBy = "author")
-	private List<Article> articles ;
-	
+	private List<Article> articles;
+
 	@OneToMany(targetEntity = Comment.class, mappedBy = "user")
 	private List<Comment> comments;
-	
+
 	/**
 	 * @param firstname
 	 * @param surname
@@ -37,19 +39,18 @@ public class Author extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	protected Author(){
-		
+	protected Author() {
+
 	}
 
 	@Column(name = "amountOfArticles")
 	private int amountOfArticles;
-		
-	
+
 	/**
 	 * @return The amount of articles the author has already written
 	 */
 	public int getAmountOfArticles() {
 		return amountOfArticles;
-	}	
-	
+	}
+
 }

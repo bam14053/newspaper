@@ -17,17 +17,16 @@ import at.bamgbala.newspaper.domain.Author;
 import at.bamgbala.newspaper.domain.RegularUser;
 
 @ContextConfiguration(classes = RepositoryTestConfiguration.class)
-public class ArticleReadRepositoryTest extends AbstractJUnit4SpringContextTests{
+public class ArticleReadRepositoryTest extends AbstractJUnit4SpringContextTests {
 	@Autowired
-	ArticleReadRepository articleReadRepository;	
+	ArticleReadRepository articleReadRepository;
 	@Autowired
 	ArticleRepository articleRepository;
 	@Autowired
 	RegularUserRepository regularUserRepository;
 	@Autowired
 	AuthorRepository authorRepository;
-	
-	
+
 	Author user1;
 	RegularUser user2;
 	RegularUser user3;
@@ -37,13 +36,16 @@ public class ArticleReadRepositoryTest extends AbstractJUnit4SpringContextTests{
 	GregorianCalendar date = new GregorianCalendar();
 
 	@Before
-	public void setup(){
-		user1 = new Author("Abideen", "Bamgbala", "abi", "password", "abi@hotmail.com");
-		user2 = new RegularUser("Anil", "Guel", "gue", "passw2", "gue@hotmail.com");
-		user3 = new RegularUser("Loa", "Mol", "asd", "wdsds", "adsas@hotmail.com");
-		article1 = new Article(user1, "First Article", "hadha");		
-		articleRead = new ArticleRead(article1,user2, date);
-		articleRead2 = new ArticleRead(article1,user3, date);
+	public void setup() {
+		user1 = new Author("Abideen", "Bamgbala", "abi", "password",
+				"abi@hotmail.com");
+		user2 = new RegularUser("Anil", "Guel", "gue", "passw2",
+				"gue@hotmail.com");
+		user3 = new RegularUser("Loa", "Mol", "asd", "wdsds",
+				"adsas@hotmail.com");
+		article1 = new Article(user1, "First Article", "hadha");
+		articleRead = new ArticleRead(article1, user2, date);
+		articleRead2 = new ArticleRead(article1, user3, date);
 		authorRepository.save(user1);
 		regularUserRepository.save(user2);
 		regularUserRepository.save(user3);
@@ -51,7 +53,7 @@ public class ArticleReadRepositoryTest extends AbstractJUnit4SpringContextTests{
 		articleReadRepository.save(articleRead);
 		articleReadRepository.save(articleRead2);
 	}
-	
+
 	@After
 	public void tearDown() throws Exception {
 		articleReadRepository.deleteAll();
@@ -62,7 +64,8 @@ public class ArticleReadRepositoryTest extends AbstractJUnit4SpringContextTests{
 
 	@Test
 	public void testFindByArticle() {
-		List<ArticleRead> result = articleReadRepository.findByArticle(article1);
+		List<ArticleRead> result = articleReadRepository
+				.findByArticle(article1);
 		Assert.assertEquals(2, result.size());
 	}
 

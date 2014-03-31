@@ -3,39 +3,47 @@ package at.bamgbala.newspaper.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import at.bamgbala.newspaper.Ensure;
 
 /**
- * @author abideen
- * The Article domain class, represents the a_articles table
+ * @author abideen The Article domain class, represents the a_articles table
  */
 @Entity
 @Table(name = "a_articles")
-public class Article implements Serializable{
+public class Article implements Serializable {
 	private static final long serialVersionUID = 5384135838124701956L;
-	
+
 	@NotNull
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "articleID", nullable = false)
 	private long id;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "writtenBy")
 	private Author author;
-	
+
 	@OneToMany(targetEntity = Comment.class, mappedBy = "article")
 	private List<Comment> comments;
-	
+
 	@OneToMany(targetEntity = ArticleRead.class, mappedBy = "article")
 	private List<ArticleRead> articleRead;
-	
+
 	@Column(name = "title", length = 255)
 	private String title;
-	
+
 	@Column(name = "text", length = 4000)
 	private String text;
 
@@ -54,14 +62,14 @@ public class Article implements Serializable{
 		this.text = text;
 	}
 
-	protected Article(){
-		
+	protected Article() {
+
 	}
-	
-	public long getID(){
+
+	public long getID() {
 		return id;
 	}
-	
+
 	/**
 	 * @return the title
 	 */
@@ -70,7 +78,8 @@ public class Article implements Serializable{
 	}
 
 	/**
-	 * @param title the title to set
+	 * @param title
+	 *            the title to set
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -84,7 +93,8 @@ public class Article implements Serializable{
 	}
 
 	/**
-	 * @param text the text to set
+	 * @param text
+	 *            the text to set
 	 */
 	public void setText(String text) {
 		this.text = text;
@@ -103,5 +113,5 @@ public class Article implements Serializable{
 	public List<Comment> getComments() {
 		return comments;
 	}
-	
+
 }

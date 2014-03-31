@@ -12,16 +12,18 @@ import at.bamgbala.newspaper.servicejpa.UserManagementService;
 
 /**
  * @author abideen
- *
+ * 
  */
 public class ServiceFactoryImpl implements ServiceJpaFactory {
 	private PersistenceFactory persistenceFactory;
-	
-	public ServiceFactoryImpl(PersistenceFactory persistenceFactory){
+
+	public ServiceFactoryImpl(PersistenceFactory persistenceFactory) {
 		this.persistenceFactory = persistenceFactory;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see at.bamgbala.newspaper.service.ServiceFactory#userManagementService()
 	 */
 	@Override
@@ -29,24 +31,34 @@ public class ServiceFactoryImpl implements ServiceJpaFactory {
 		return new UserManagementService();
 	}
 
-	/* (non-Javadoc)
-	 * @see at.bamgbala.newspaper.service.ServiceFactory#articleManagementService()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * at.bamgbala.newspaper.service.ServiceFactory#articleManagementService()
 	 */
 	@Override
 	public ArticleManagementService articleManagementService() {
 		return new ArticleManagementService();
 	}
 
-	/* (non-Javadoc)
-	 * @see at.bamgbala.newspaper.service.ServiceFactory#articleReadManagementService()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * at.bamgbala.newspaper.service.ServiceFactory#articleReadManagementService
+	 * ()
 	 */
 	@Override
 	public ArticleReadManagementService articleReadManagementService() {
 		return new ArticleReadManagementService();
 	}
 
-	/* (non-Javadoc)
-	 * @see at.bamgbala.newspaper.service.ServiceFactory#commentManagementService()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * at.bamgbala.newspaper.service.ServiceFactory#commentManagementService()
 	 */
 	@Override
 	public CommentManagementService commentManagementService() {

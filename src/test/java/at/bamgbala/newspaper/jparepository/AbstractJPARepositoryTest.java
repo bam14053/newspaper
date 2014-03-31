@@ -6,6 +6,7 @@ package at.bamgbala.newspaper.jparepository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
 import org.junit.After;
 import org.junit.Before;
 import org.slf4j.Logger;

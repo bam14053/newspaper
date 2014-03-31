@@ -1,4 +1,5 @@
 package at.bamgbala.newspaper.repository;
+
 import java.util.Iterator;
 
 import org.junit.After;
@@ -12,7 +13,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import at.bamgbala.newspaper.domain.RegularUser;
 
 @ContextConfiguration(classes = RepositoryTestConfiguration.class)
-public class RegularUserRepositoryTest extends AbstractJUnit4SpringContextTests{
+public class RegularUserRepositoryTest extends AbstractJUnit4SpringContextTests {
 	@Autowired
 	RegularUserRepository regularUserRepository;
 
@@ -22,28 +23,32 @@ public class RegularUserRepositoryTest extends AbstractJUnit4SpringContextTests{
 	}
 
 	@Before
-	public void startUp(){
+	public void startUp() {
 		regularUserRepository.deleteAll();
 	}
-	
+
 	@Test
 	public void test() {
-		RegularUser user1 = new RegularUser("Abideen", "Bamgbala", "abi", "password", "abi@hotmail.com");
-		RegularUser user2 = new RegularUser("Anil", "Guel", "gue", "passw2", "gue@hotmail.com");
-		RegularUser user3 = new RegularUser("Loa", "Mol", "asd", "wdsds", "adsas@hotmail.com");
+		RegularUser user1 = new RegularUser("Abideen", "Bamgbala", "abi",
+				"password", "abi@hotmail.com");
+		RegularUser user2 = new RegularUser("Anil", "Guel", "gue", "passw2",
+				"gue@hotmail.com");
+		RegularUser user3 = new RegularUser("Loa", "Mol", "asd", "wdsds",
+				"adsas@hotmail.com");
 		regularUserRepository.save(user1);
 		regularUserRepository.save(user2);
 		regularUserRepository.save(user3);
-		
-		//When
-		Iterator<RegularUser> findAll = regularUserRepository.findAll().iterator();
-		
-		//Then
+
+		// When
+		Iterator<RegularUser> findAll = regularUserRepository.findAll()
+				.iterator();
+
+		// Then
 		Assert.assertEquals(3, regularUserRepository.count());
 		Assert.assertEquals(user1.getId(), findAll.next().getId());
 		Assert.assertEquals(user2.getId(), findAll.next().getId());
 		Assert.assertEquals(user3.getId(), findAll.next().getId());
-		
+
 	}
 
 }

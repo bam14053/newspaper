@@ -13,30 +13,31 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author abideen
- *
+ * 
  */
 public abstract class AbstractJPARepository<T> implements AnyRepo {
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-	public AbstractJPARepository(){}
-	
-    @PersistenceContext
-    protected EntityManager entityManager;
+	public AbstractJPARepository() {
+	}
 
-    protected EntityManager entityManager() {
-        return entityManager;
-    }
+	@PersistenceContext
+	protected EntityManager entityManager;
 
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+	protected EntityManager entityManager() {
+		return entityManager;
+	}
 
-    public abstract List<T> findAll();
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 
-    public abstract T findById(Long id);
+	public abstract List<T> findAll();
 
-    public void persist(T t) {
-    	logger.info("Persisiting the entity "+t.getClass().toString());
-        entityManager.persist(t);
-    }
+	public abstract T findById(Long id);
+
+	public void persist(T t) {
+		logger.info("Persisiting the entity " + t.getClass().toString());
+		entityManager.persist(t);
+	}
 }

@@ -1,6 +1,7 @@
 package at.bamgbala.newspaper.repository;
 
 import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -12,16 +13,17 @@ import org.springframework.transaction.PlatformTransactionManager;
 import at.bamgbala.newspaper.domain.DomainConfiguration;
 
 @Configuration
-@Import({DomainConfiguration.class, RepositoryConfiguration.class})
+@Import({ DomainConfiguration.class, RepositoryConfiguration.class })
 public class RepositoryTestConfiguration {
 
 	@Bean
-	public DataSource dataSource(){
-		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
+	public DataSource dataSource() {
+		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
+				.build();
 	}
 
 	@Bean
-	public PlatformTransactionManager transactionManager(){
+	public PlatformTransactionManager transactionManager() {
 		return new JpaTransactionManager();
 	}
 }

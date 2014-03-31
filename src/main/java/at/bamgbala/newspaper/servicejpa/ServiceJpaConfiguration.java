@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author abideen
- *
+ * 
  */
 @Configuration
 @ComponentScan(basePackageClasses = ServiceJpaPackage.class)

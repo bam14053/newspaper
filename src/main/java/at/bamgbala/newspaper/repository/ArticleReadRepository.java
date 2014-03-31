@@ -15,11 +15,14 @@ import at.bamgbala.newspaper.domain.RegularUser;
 
 /**
  * @author abideen
- *
+ * 
  */
 @Repository
-public interface ArticleReadRepository extends CrudRepository<ArticleRead, Long>{
+public interface ArticleReadRepository extends
+		CrudRepository<ArticleRead, Long> {
 	List<ArticleRead> findByArticle(Article article);
+
 	List<ArticleRead> findByUser(RegularUser regularUser);
+
 	List<ArticleRead> findByReadOn(GregorianCalendar date);
 }

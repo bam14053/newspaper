@@ -21,7 +21,7 @@ import at.bamgbala.newspaper.Ensure;
 
 /**
  * @author abideen
- *
+ * 
  */
 @Entity
 @Table(name = "c_comments")
@@ -33,24 +33,24 @@ public class Comment implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private long id;
-	
+
 	@ManyToOne(targetEntity = Article.class)
 	@JoinColumn(name = "articleID")
 	private Article article;
-	
+
 	@ManyToOne(targetEntity = RegularUser.class)
 	@JoinColumn(name = "userID")
 	private RegularUser user;
-	
+
 	@ManyToOne(targetEntity = Author.class)
 	@JoinColumn(name = "authorID")
 	private Author author;
-	
+
 	@NotNull
 	@Size(max = 200)
 	@Column(name = "text", nullable = false, length = 200)
 	private String text;
-	
+
 	@Column(name = "timespamp")
 	private GregorianCalendar writtenOn;
 
@@ -72,7 +72,7 @@ public class Comment implements Serializable {
 		this.text = text;
 		this.writtenOn = writtenOn;
 	}
-	
+
 	public Comment(Article article, RegularUser user, String text,
 			GregorianCalendar writtenOn) {
 		super();
@@ -85,10 +85,11 @@ public class Comment implements Serializable {
 		this.text = text;
 		this.writtenOn = writtenOn;
 	}
-	
-	protected Comment(){
-		
+
+	protected Comment() {
+
 	}
+
 	/**
 	 * @return the text
 	 */
@@ -97,7 +98,8 @@ public class Comment implements Serializable {
 	}
 
 	/**
-	 * @param text the text to set
+	 * @param text
+	 *            the text to set
 	 */
 	public void setText(String text) {
 		this.text = text;
@@ -124,5 +126,4 @@ public class Comment implements Serializable {
 		return writtenOn;
 	}
 
-	
 }

@@ -4,11 +4,12 @@
 package at.bamgbala.newspaper.jparepository;
 
 import java.util.List;
+
 import at.bamgbala.newspaper.domain.Article;
 
 /**
  * @author abideen
- *
+ * 
  */
 public class ArticleJpaRepository extends AbstractJPARepository<Article> {
 

@@ -15,27 +15,28 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 /**
  * @author abideen
- *
+ * 
  */
 @Configuration
 @ComponentScan(basePackages = "at.bamgbala.newspaper.jparepository")
 public class RepositoryJpaConfiguration {
-	
+
 	@Bean
-	public JpaVendorAdapter jpaVendorAdapter(){
+	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        hibernateJpaVendorAdapter.setShowSql(true);
-        hibernateJpaVendorAdapter.setGenerateDdl(true);
-        hibernateJpaVendorAdapter.setDatabase(Database.H2);
-        return hibernateJpaVendorAdapter;
+		hibernateJpaVendorAdapter.setShowSql(true);
+		hibernateJpaVendorAdapter.setGenerateDdl(true);
+		hibernateJpaVendorAdapter.setDatabase(Database.H2);
+		return hibernateJpaVendorAdapter;
 	}
-	
+
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter){
+	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(
+			DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
 		LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
-        lef.setDataSource(dataSource);
-        lef.setJpaVendorAdapter(jpaVendorAdapter);
-        lef.setPackagesToScan("at.bamgbala.newspaper.domain");
-        return lef;
+		lef.setDataSource(dataSource);
+		lef.setJpaVendorAdapter(jpaVendorAdapter);
+		lef.setPackagesToScan("at.bamgbala.newspaper.domain");
+		return lef;
 	}
 }

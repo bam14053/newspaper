@@ -12,11 +12,13 @@ import at.bamgbala.newspaper.domain.DomainConfiguration;
 import at.bamgbala.newspaper.repository.RepositoryConfiguration;
 import at.bamgbala.newspaper.service.ServiceConfiguration;
 
-@Import(value = {DomainConfiguration.class, RepositoryConfiguration.class, ServiceConfiguration.class})
+@Import(value = { DomainConfiguration.class, RepositoryConfiguration.class,
+		ServiceConfiguration.class })
 @Configuration
 public class WebappApplicationConfig {
 	@Bean
-    public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
-    }
+	public DataSource dataSource() {
+		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
+				.build();
+	}
 }

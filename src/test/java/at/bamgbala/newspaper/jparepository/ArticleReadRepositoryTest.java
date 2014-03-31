@@ -5,14 +5,14 @@ import org.junit.Test;
 
 public class ArticleReadRepositoryTest extends AbstractJPARepositoryTest {
 	ArticleReadJpaRepository articleReadRepository = new ArticleReadJpaRepository();
-	UserJpaRepository userRepository = new UserJpaRepository();	
+	UserJpaRepository userRepository = new UserJpaRepository();
 	ArticleJpaRepository articleRepository = new ArticleJpaRepository();
-	
+
 	@Override
 	@Before
 	public void setUp() {
 		super.setUp();
-		//Initialzing all neccessary repos
+		// Initialzing all neccessary repos
 		articleReadRepository.setEntityManager(entityManager);
 		articleRepository.setEntityManager(entityManager);
 		userRepository.setEntityManager(entityManager);

@@ -14,19 +14,19 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import at.bamgbala.newspaper.domain.DomainConfiguration;
 import at.bamgbala.newspaper.repository.RepositoryConfiguration;
-import at.bamgbala.newspaper.service.ServiceConfiguration;
 
 /**
  * @author abideen
- *
+ * 
  */
-@Import(value = {DomainConfiguration.class, RepositoryConfiguration.class})
+@Import(value = { DomainConfiguration.class, RepositoryConfiguration.class })
 @Configuration
 @ComponentScan(basePackageClasses = RestPackage.class)
 public class RestApplicationConfig {
 
 	@Bean
-    public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
-    }
+	public DataSource dataSource() {
+		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
+				.build();
+	}
 }

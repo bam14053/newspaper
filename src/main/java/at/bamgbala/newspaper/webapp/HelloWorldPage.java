@@ -5,7 +5,7 @@ import org.apache.wicket.markup.html.basic.Label;
 
 public class HelloWorldPage extends WebPage {
 
-	public HelloWorldPage(){
+	public HelloWorldPage() {
 		add(new Label("helloMessage", "Hello Abideen"));
 	}
 }

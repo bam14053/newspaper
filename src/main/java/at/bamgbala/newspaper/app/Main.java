@@ -26,8 +26,6 @@ public class Main {
 		persistenceFactory = new PersistenceFactoryImpl(entityManager);
 		serviceFactory = new ServiceFactoryImpl(persistenceFactory);
 	}
-	
-	
 
 	public void close() {
 		if (entityManager != null)

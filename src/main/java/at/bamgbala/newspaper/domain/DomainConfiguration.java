@@ -14,25 +14,26 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 /**
  * @author abideen
- *
+ * 
  */
 @Configuration
 public class DomainConfiguration {
 	@Bean
-	public JpaVendorAdapter jpaVendorAdapter(){
+	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        hibernateJpaVendorAdapter.setShowSql(true);
-        hibernateJpaVendorAdapter.setGenerateDdl(true);
-        hibernateJpaVendorAdapter.setDatabase(Database.H2);
-        return hibernateJpaVendorAdapter;
+		hibernateJpaVendorAdapter.setShowSql(true);
+		hibernateJpaVendorAdapter.setGenerateDdl(true);
+		hibernateJpaVendorAdapter.setDatabase(Database.H2);
+		return hibernateJpaVendorAdapter;
 	}
-	
+
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter){
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+			DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
 		LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
-        lef.setDataSource(dataSource);
-        lef.setJpaVendorAdapter(jpaVendorAdapter);
-        lef.setPackagesToScan(DomainPackage.class.getPackage().getName());
-        return lef;
+		lef.setDataSource(dataSource);
+		lef.setJpaVendorAdapter(jpaVendorAdapter);
+		lef.setPackagesToScan(DomainPackage.class.getPackage().getName());
+		return lef;
 	}
 }

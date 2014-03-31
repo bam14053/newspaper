@@ -17,7 +17,7 @@ import at.bamgbala.newspaper.domain.Comment;
 import at.bamgbala.newspaper.domain.RegularUser;
 
 @ContextConfiguration(classes = RepositoryTestConfiguration.class)
-public class CommentRepositoryTest extends AbstractJUnit4SpringContextTests{
+public class CommentRepositoryTest extends AbstractJUnit4SpringContextTests {
 	@Autowired
 	CommentRepository commentRepository;
 	@Autowired
@@ -26,35 +26,46 @@ public class CommentRepositoryTest extends AbstractJUnit4SpringContextTests{
 	ArticleRepository articleRepository;
 	@Autowired
 	RegularUserRepository regularUserRepository;
-	
+
 	Author author;
 	Article article;
 	RegularUser regularUser;
-	
+
 	@After
 	public void tearDown() throws Exception {
 		commentRepository.deleteAll();
 		articleRepository.deleteAll();
-		authorRepository.deleteAll();		
+		authorRepository.deleteAll();
 		regularUserRepository.deleteAll();
 	}
 
 	@Before
-	public void setup(){		
-		author = new Author("Abideen", "Bamgbala", "abi", "hello", "bam14053@hotmail.com");
+	public void setup() {
+		author = new Author("Abideen", "Bamgbala", "abi", "hello",
+				"bam14053@hotmail.com");
 		article = new Article(author, "First Article", "BALABLA");
 		regularUser = new RegularUser("B", "A", "abi", "ok", "bam@homail.com");
-		authorRepository.save(author);		
+		authorRepository.save(author);
 		regularUserRepository.save(regularUser);
 		articleRepository.save(article);
-		commentRepository.save(new Comment(article, regularUser, "That is a good text", new GregorianCalendar(2012, 3, 5)));
-		commentRepository.save(new Comment(article, author, "Thanks, for comments", new GregorianCalendar(2012, 3, 5)));
-		commentRepository.save(new Comment(article, regularUser, "That is a good text again", new GregorianCalendar(2012, 3, 5)));
-		commentRepository.save(new Comment(article, regularUser, "That is a good text", new GregorianCalendar(2013, 3, 6)));
-		commentRepository.save(new Comment(article, author, "Thanks, for comments", new GregorianCalendar(2013, 3, 6)));
-		commentRepository.save(new Comment(article, regularUser, "That is a good text again", new GregorianCalendar(2013, 3, 6)));
+		commentRepository.save(new Comment(article, regularUser,
+				"That is a good text", new GregorianCalendar(2012, 3, 5)));
+		commentRepository.save(new Comment(article, author,
+				"Thanks, for comments", new GregorianCalendar(2012, 3, 5)));
+		commentRepository
+				.save(new Comment(article, regularUser,
+						"That is a good text again", new GregorianCalendar(
+								2012, 3, 5)));
+		commentRepository.save(new Comment(article, regularUser,
+				"That is a good text", new GregorianCalendar(2013, 3, 6)));
+		commentRepository.save(new Comment(article, author,
+				"Thanks, for comments", new GregorianCalendar(2013, 3, 6)));
+		commentRepository
+				.save(new Comment(article, regularUser,
+						"That is a good text again", new GregorianCalendar(
+								2013, 3, 6)));
 	}
-	
+
 	@Test
 	public void testFindByArticle() {
 		List<Comment> result = commentRepository.findByArticle(article);
@@ -75,9 +86,11 @@ public class CommentRepositoryTest extends AbstractJUnit4SpringContextTests{
 
 	@Test
 	public void testFindByWrittenOn() {
-		List<Comment> result = commentRepository.findByWrittenOn(new GregorianCalendar(2012, 3, 5));
+		List<Comment> result = commentRepository
+				.findByWrittenOn(new GregorianCalendar(2012, 3, 5));
 		Assert.assertEquals(3, result.size());
-		result = commentRepository.findByWrittenOn(new GregorianCalendar(2013, 3, 6));
+		result = commentRepository.findByWrittenOn(new GregorianCalendar(2013,
+				3, 6));
 		Assert.assertEquals(3, result.size());
 	}
 

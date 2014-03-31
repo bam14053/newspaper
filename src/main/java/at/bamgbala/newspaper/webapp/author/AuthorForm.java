@@ -15,20 +15,21 @@ public class AuthorForm extends Form<Author> {
 
 	@SpringBean
 	private AuthorRepository authorRepository;
-	
+
 	public AuthorForm(String id) {
-		super(id, new CompoundPropertyModel<Author>(new Author("abideen", "Bamgbala", "abi", "hello", "may@homtmail.com")));
+		super(id, new CompoundPropertyModel<Author>(new Author("abideen",
+				"Bamgbala", "abi", "hello", "may@homtmail.com")));
 		add(new TextField<>("firstname"));
 		add(new TextField<>("lastname"));
 		add(new TextField<>("username"));
 		add(new TextField<>("password"));
 		add(new TextField<>("e-mail"));
 	}
-	
+
 	@Override
-    public final void onSubmit() {
-        Author author = getModelObject();
-        authorRepository.save(author);
-        logger.error("Teacher after save: " + author);
-    }
+	public final void onSubmit() {
+		Author author = getModelObject();
+		authorRepository.save(author);
+		logger.error("Teacher after save: " + author);
+	}
 }

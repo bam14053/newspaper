@@ -12,12 +12,13 @@ import at.bamgbala.newspaper.jparepository.ArticleReadJpaRepository;
 
 /**
  * @author abideen
- *
+ * 
  */
-public class ArticleReadManagementService {	
+public class ArticleReadManagementService {
 	private ArticleReadJpaRepository articleReadRepository;
-	
-	public void articleRead(Article article, RegularUser user, GregorianCalendar readOn){
+
+	public void articleRead(Article article, RegularUser user,
+			GregorianCalendar readOn) {
 		ArticleRead ar = new ArticleRead(article, user, readOn);
 		articleReadRepository.persist(ar);
 	}

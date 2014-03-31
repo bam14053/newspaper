@@ -1,6 +1,7 @@
 package at.bamgbala.newspaper.rest;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
 public class RestWebApplicationInitializer extends
 		AbstractAnnotationConfigDispatcherServletInitializer {
 
